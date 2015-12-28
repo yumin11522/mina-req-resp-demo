@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="120 seconds" >
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %level [%thread] [%logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <prudent>false</prudent>
+        
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>trace/%d{yyyy-MM-dd}/%d{yyyyMMdd-HHmmss-SSS}-%i.trace.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            
+            <maxHistory>120</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%date %level [%thread] [%logger{80}] %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="com.vake" level="DEBUG" additivity="true">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    
+    <root level="DEBUG">
+        <appender-ref ref="ROLLING" />
+    </root>
+</configuration>

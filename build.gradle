@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.vake'
+version = '1.0-SNAPSHOT'
+
+description = """mina-reqrsp-demo"""
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.12'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:'1.1.3'
+    compile group: 'ch.qos.logback', name: 'logback-access', version:'1.1.3'
+    compile group: 'org.apache.mina', name: 'mina-core', version:'2.0.7'
+    compile group: 'commons-lang', name: 'commons-lang', version:'2.6'
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version:'1.9.2'
+    testCompile group: 'junit', name: 'junit', version:'3.8.1'
+}
